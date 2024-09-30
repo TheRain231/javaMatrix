@@ -15,6 +15,26 @@ public class Matrix {
         this.matrix = matrix;
     }
 
+    ///operations
+    public Matrix add(Matrix matrix) {
+        Complex[][] newMatrix = new Complex[this.matrix.length][this.matrix[0].length];
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                newMatrix[i][j] = this.matrix[i][j].add(matrix.get(i, j));
+            }
+        }
+        return new Matrix(newMatrix);
+    }
+    public Matrix subtract(Matrix matrix) {
+        Complex[][] newMatrix = new Complex[this.matrix.length][this.matrix[0].length];
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                newMatrix[i][j] = this.matrix[i][j].add(matrix.get(i, j).mul(new Complex(-1, 0)));
+            }
+        }
+        return new Matrix(newMatrix);
+    }
+
     ///methods
     public void printMatrix() {
         for (Complex[] complexes : matrix) {
