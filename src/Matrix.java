@@ -1,6 +1,8 @@
 public class Matrix {
+    ///variables
     private Complex[][] matrix;
 
+    ///init
     public Matrix(int rows, int columns) {
         matrix = new Complex[rows][columns];
         for (int i = 0; i < rows; i++) {
@@ -13,6 +15,18 @@ public class Matrix {
         this.matrix = matrix;
     }
 
+    ///methods
+    public void printMatrix() {
+        for (Complex[] complexes : matrix) {
+            for (Complex complex : complexes) {
+                complex.print();
+                System.out.print("  ");
+            }
+            System.out.println();
+        }
+    }
+
+    ///get, set
     public Complex[][] getMatrix() {
         return matrix;
     }
@@ -25,15 +39,5 @@ public class Matrix {
     }
     public void set(int i, int j, Complex z) {
         matrix[i][j] = z;
-    }
-
-    public void printMatrix() {
-        for (Complex[] complexes : matrix) {
-            for (Complex complex : complexes) {
-                complex.print();
-                System.out.print("  ");
-            }
-            System.out.println();
-        }
     }
 }
