@@ -12,10 +12,13 @@ public class Complex {
         this.real = c.real;
         this.imag = c.imag;
     }
-
     public Complex(double real, double imag) {
         this.real = real;
         this.imag = imag;
+    }
+    public Complex(double real) {
+        this.real = real;
+        this.imag = 0.0;
     }
 
     ///operations
