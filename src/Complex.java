@@ -40,10 +40,20 @@ public class Complex {
     }
     ///methods
     public void print(){
-        if (this.imag != 0.0) {
-            System.out.print(this.real + " + " + this.imag + "i");
-        } else {
+        if (this.imag == 0.0) {
             System.out.print(this.real);
+        }
+        else if (this.real == 0.0) {
+            System.out.print(this.imag + "i");
+        }
+        else {
+            System.out.print(this.real);
+            if (this.imag > 0.0) {
+                System.out.print("+" + this.imag + "i");
+            }
+            else{
+                System.out.print(this.imag + "i");
+            }
         }
     }
 

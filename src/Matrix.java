@@ -66,6 +66,51 @@ public class Matrix {
     }
 
     ///methods
+    public Complex determinant(){
+        return determinant(this.getMatrix());
+    }
+
+    private Complex determinant(Complex[][] matrix) {
+        int n = matrix.length;
+
+        if (n == 1) {
+            return matrix[0][0];
+        }
+
+        if (n == 2) {
+            return matrix[0][0].mul(matrix[1][1]).sub(matrix[0][1].mul(matrix[1][0]));
+        }
+
+        Complex det = new Complex();
+        for (int col = 0; col < n; col++) {
+            det = det.add(matrix[0][col].mul(new Complex(Math.pow(-1, col))).mul(determinant(minor(matrix,0, col))));
+        }
+
+        return det;
+    }
+
+    private Complex[][] minor(Complex[][] matrix, int row, int col) {
+        int n = matrix.length;
+        Complex[][] minor = new Complex[n - 1][n - 1];
+
+        int minorRow = 0;
+        for (int i = 0; i < n; i++) {
+            if (i == row) {
+                continue;
+            }
+            int minorCol = 0;
+            for (int j = 0; j < n; j++) {
+                if (j == col) {
+                    continue;
+                }
+                minor[minorRow][minorCol] = matrix[i][j];
+                minorCol++;
+            }
+            minorRow++;
+        }
+        return minor;
+    }
+
     public void printMatrix() {
         for (Complex[] complexes : matrix) {
             for (Complex complex : complexes) {
@@ -91,3 +136,5 @@ public class Matrix {
         matrix[i][j] = z;
     }
 }
+
+
