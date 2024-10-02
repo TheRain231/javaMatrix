@@ -64,6 +64,18 @@ public class Matrix {
         }
         return new Matrix(newMatrix);
     }
+    public Matrix divide(Matrix matrix) {
+        return this.multiply(matrix.inverse());
+    }
+    public Matrix divide(Complex number) {
+        Complex[][] newMatrix = new Complex[this.matrix.length][this.matrix[0].length];
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                newMatrix[i][j] = this.matrix[i][j].div(number);
+            }
+        }
+        return new Matrix(newMatrix);
+    }
     public Matrix transpose() {
         Complex[][] newMatrix = new Complex[this.matrix.length][this.matrix[0].length];
         for (int i = 0; i < this.matrix.length; i++) {
@@ -72,6 +84,19 @@ public class Matrix {
             }
         }
         return new Matrix(newMatrix);
+    }
+    public Matrix inverse(){
+        Complex det = determinant();
+        if (det.equals(new Complex(0))) {
+            throw new ArithmeticException("Determinant is zero, matrix can't be inversed");
+        }
+        Complex[][] matrixOfMinors = new Complex[this.matrix.length][this.matrix[0].length];
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                matrixOfMinors[i][j] = determinant(minor(matrix, i, j)).mul(new Complex(Math.pow(-1, i + j)));
+            }
+        }
+        return new Matrix(matrixOfMinors).transpose().multiply(new Complex(1).div(det));
     }
 
     ///methods
@@ -91,8 +116,8 @@ public class Matrix {
         }
 
         Complex det = new Complex();
-        for (int col = 0; col < n; col++) {
-            det = det.add(matrix[0][col].mul(new Complex(Math.pow(-1, col))).mul(determinant(minor(matrix,0, col))));
+        for (int i = 0; i < n; i++) {
+            det = det.add(matrix[0][i].mul(new Complex(Math.pow(-1, i))).mul(determinant(minor(matrix,0, i))));
         }
 
         return det;

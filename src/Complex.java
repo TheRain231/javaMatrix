@@ -38,6 +38,9 @@ public class Complex {
         double newImag = (this.imag * c.real - this.real * c.imag) / (c.real * c.real + c.imag * c.imag);
         return new Complex(newReal, newImag);
     }
+    public boolean equals(Complex c) {
+        return this.real == c.real && this.imag == c.imag;
+    }
     ///methods
     public void print(){
         if (this.imag == 0.0) {

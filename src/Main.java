@@ -24,5 +24,18 @@ public class Main {
         matrix2.printMatrix();
         System.out.print("Determinant: ");
         matrix2.determinant().print();
+        System.out.println('\n');
+
+        Complex[][] m3 = {
+                {new Complex(2), new Complex(5), new Complex(7)},
+                {new Complex(6), new Complex(3), new Complex(4)},
+                {new Complex(5), new Complex(-2), new Complex(-3)}
+        };
+        Matrix matrix3 = new Matrix(m3);
+        matrix3 = matrix3.inverse();
+        System.out.println("Inversed matrix: ");
+        matrix3.printMatrix();
+        System.out.println('\n');
+        matrix1.divide(matrix3).printMatrix();
     }
 }
