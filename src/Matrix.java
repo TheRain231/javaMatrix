@@ -1,5 +1,3 @@
-import java.io.Console;
-
 public class Matrix {
     ///variables
     private Complex[][] matrix;
@@ -99,7 +97,7 @@ public class Matrix {
         return new Matrix(matrixOfMinors).transpose().multiply(new Complex(1).div(det));
     }
 
-    ///methods
+    ///properties
     public Complex determinant(){
         return determinant(this.getMatrix());
     }
@@ -145,6 +143,7 @@ public class Matrix {
         return minor;
     }
 
+    ///methods
     public void printMatrix() {
         for (Complex[] complexes : matrix) {
             for (Complex complex : complexes) {
