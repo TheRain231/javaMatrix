@@ -19,6 +19,9 @@ public class Main {
         };
         matrix2.setMatrix(m2);
         matrix2.printMatrix();
+        System.out.println("Transposed matrix: ");
+        matrix2 = matrix2.transpose();
+        matrix2.printMatrix();
         System.out.print("Determinant: ");
         matrix2.determinant().print();
     }

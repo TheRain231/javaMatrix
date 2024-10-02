@@ -64,6 +64,15 @@ public class Matrix {
         }
         return new Matrix(newMatrix);
     }
+    public Matrix transpose() {
+        Complex[][] newMatrix = new Complex[this.matrix.length][this.matrix[0].length];
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = 0; j < this.matrix[0].length; j++) {
+                newMatrix[i][j] = this.matrix[j][i];
+            }
+        }
+        return new Matrix(newMatrix);
+    }
 
     ///methods
     public Complex determinant(){
