@@ -39,7 +39,8 @@ public class Matrix {
     }
     public Matrix multiply(Matrix matrix) {
         if (this.matrix.length != this.matrix[0].length) {
-            throw new IllegalArgumentException("Matrices does not have the same number of rows and columns");
+            System.out.println("Matrices does not have the same number of rows and columns");
+            return null;
         }
 
         Complex[][] newMatrix = new Complex[this.matrix.length][matrix.getMatrix()[0].length];
@@ -86,7 +87,8 @@ public class Matrix {
     public Matrix inverse(){
         Complex det = determinant();
         if (det.equals(new Complex(0))) {
-            throw new ArithmeticException("Determinant is zero, matrix can't be inversed");
+            System.out.println("Determinant is zero, matrix can't be inversed");
+            return null;
         }
         Complex[][] matrixOfMinors = new Complex[this.matrix.length][this.matrix[0].length];
         for (int i = 0; i < this.matrix.length; i++) {
